@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://rawgit.com/dawsonbotsford/satoshi-bitcoin/master/index.bundle.js"></script>
+    <script src="abi.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/wallet-address-validator@0.2.4/dist/wallet-address-validator.min.js"></script>
+
+
+
+	<link href="./style.css" rel="stylesheet" type="text/css" />	
+    <title>Lesson 25</title>
+
+</head>
+
+<body>
+<div class="top">
+</div>
+
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'open1')" id="ETH">ETH</button>
+  <button class="tablinks" onclick="openCity(event, 'open2')" id="ERC20">ERC20</button>
+  <button class="tablinks" onclick="openCity(event, 'open3')" id="BTC">BTC</button>
+  <button class="tablinks" onclick="openCity(event, 'open4')" id="BNB">BNB</button>
+  <button class="tablinks" onclick="openCity(event, 'open5')" id="LTC">LTC</button>
+</div>
+
+
+<div id="open1" class="tabcontent">
+	<div class="conteiner" >
+		<h1 id="main_currency">ETH</h1>
+		<div class="wrapper">
+			<div><p> <b>Balance:&nbsp;</b> <i id="balance"></i> <i class="currency">ETH</i></p></div>
+			<div><p> <b>Address:&nbsp;</b> <i id="address"></i></p></div>
+			<div>
+				<p><b>Receiver:&nbsp;</b></p>
+				<input placeholder="address" name="address" id="transfer_address" autocomplete="off">
+			</div>
+			<div>
+				<p><b>Amount:&nbsp;</b></p>
+				<input placeholder="amount" name="amount" id="transfer_amount" type="number" autocomplete="off">
+			</div>
+			<div>
+				<button id="send_button" class="glow-on-hover" onclick="">SEND</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+<div id="open2" class="tabcontent" >
+	<div class="conteiner" >
+		<h1 id="main_currency_erc">ERC20</h1>
+		<div class="wrapper">
+			<div><p> <b>Balance:&nbsp;</b> <i id="balance_erc20"></i> <i id="currency_erc20"></i></p></div>
+			<div><p> <b>Address:&nbsp;</b> <i id="address_erc20"></i></p></div>
+			<div>
+				<p><b>Receiver:&nbsp;</b></p>
+				<input placeholder="address" name="address" id="transfer_address_erc" autocomplete="off">
+			</div>
+			<div>
+				<p><b>Amount:&nbsp;</b></p>
+				<input placeholder="amount" name="amount" id="transfer_amount_erc" type="number" autocomplete="off">
+			</div>
+			<div>
+				<button id="send_button_erc" class="glow-on-hover" onclick="">SEND</button>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div id="open3" class="tabcontent">
+	<div class="conteiner" >
+		<h1 id="main_currency_btc">BTC</h1>
+		<div class="wrapper">
+			<div><p> <b>Balance:&nbsp;</b> <i id="balance_btc"></i> <i id="currency_btc">BTC</i></p></div>
+			<div><p> <b>Address:&nbsp;</b> <i id="address_btc"></i></p></div>
+			<div>
+				<p><b>Receiver:&nbsp;</b></p>
+				<input placeholder="address" name="address" id="transfer_address_btc" autocomplete="off">
+			</div>
+			<div>
+				<p><b>Amount:&nbsp;</b></p>
+				<input placeholder="amount" name="amount" id="transfer_amount_btc" type="number" autocomplete="off">
+			</div>
+			<div>
+				<button id="send_button_btc" class="glow-on-hover" onclick="">SEND</button>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+
+
+
+<div id="open4" class="tabcontent">
+		<div class="conteiner" >
+		<h1 id="main_currency_bnb">BNB</h1>
+		<div class="wrapper">
+			<div><p> <b>Balance:&nbsp;</b> <i id="balance_bnb"></i> <i id="currency_bnb">BNB</i></p></div>
+			<div><p> <b>Address:&nbsp;</b> <i id="address_bnb"></i></p></div>
+			<div>
+				<p><b>Receiver:&nbsp;</b></p>
+				<input placeholder="address" name="address" id="transfer_address_bnb" autocomplete="off">
+			</div>
+			<div>
+				<p><b>Amount:&nbsp;</b></p>
+				<input placeholder="amount" name="amount" id="transfer_amount_bnb" type="number" autocomplete="off">
+			</div>
+			<div>
+				<button id="send_button_bnb" class="glow-on-hover" onclick="">SEND</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div id="open5" class="tabcontent">
+	<div class="conteiner" >
+		<h1 id="main_currency_ltc">LTC</h1>
+		<div class="wrapper">
+			<div><p> <b>Balance:&nbsp;</b> <i id="balance_ltc"></i> <i id="currency_ltc">LTC</i></p></div>
+			<div><p> <b>Address:&nbsp;</b> <i id="address_ltc"></i></p></div>
+			<div>
+				<p><b>Receiver:&nbsp;</b></p>
+				<input placeholder="address" name="address" id="transfer_address_ltc" autocomplete="off">
+			</div>
+			<div>
+				<p><b>Amount:&nbsp;</b></p>
+				<input placeholder="amount" name="amount" id="transfer_amount_ltc" type="number" autocomplete="off">
+			</div>
+			<div>
+				<button id="send_button_ltc" class="glow-on-hover" onclick="">SEND</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="footer">
+
+</div>
+
+
+</body>
+<script src="index.js"></script>
+</html>
